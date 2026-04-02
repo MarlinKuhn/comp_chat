@@ -1,3 +1,4 @@
 client/frontend/node_modules
 client/frontend/dist
 client/frontend/.vite
+.DS_Store

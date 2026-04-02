@@ -3,11 +3,14 @@ package app
 import (
 	"context"
 	"fmt"
+
+	"github.com/MarlinKuhn/comp_chat/client/internal/config"
 )
 
 // App struct
 type App struct {
-	ctx context.Context
+	ctx    context.Context
+	config config.Config
 }
 
 // NewApp creates a new App application struct
@@ -19,9 +22,13 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+	err := a.config.Load()
+	if err != nil {
+		panic(fmt.Sprintf("Failed to load config: %v", err))
+	}
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
+// Config returns the app's config
+func (a *App) Config() config.Config {
+	return a.config
 }
