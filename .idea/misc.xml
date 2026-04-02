@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="KubernetesApiPersistence">
-    <option name="context" value="default" />
-    <option name="namespace" value="default" />
-  </component>
   <component name="ProtobufLanguageSettings">
     <option name="autoConfigEnabled" value="false" />
     <option name="importPathEntries">

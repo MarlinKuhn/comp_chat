@@ -15,7 +15,7 @@ var assets embed.FS
 func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:         "Comp Chat",
+		Title:         "Nano Wave",
 		Width:         1024,
 		Height:        768,
 		DisableResize: false,
