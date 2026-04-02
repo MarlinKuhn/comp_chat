@@ -1,0 +1,33 @@
+package main
+
+import (
+	"embed"
+
+	app2 "github.com/MarlinKuhn/comp_chat/client/internal/app"
+	"github.com/wailsapp/wails/v2"
+	"github.com/wailsapp/wails/v2/pkg/options"
+	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
+)
+
+//go:embed all:frontend/dist
+var assets embed.FS
+
+func main() {
+	// Create application with options
+	err := wails.Run(&options.App{
+		Title:         "Comp Chat",
+		Width:         1024,
+		Height:        768,
+		DisableResize: false,
+		AssetServer: &assetserver.Options{
+			Assets: assets,
+		},
+		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
+		OnStartup:        app2.Startup,
+		Bind:             app2.Bindings,
+	})
+
+	if err != nil {
+		println("Error:", err.Error())
+	}
+}
